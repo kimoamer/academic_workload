@@ -1,0 +1,68 @@
+{
+  "doctype": "DocType",
+  "name": "Academic Workload Committee",
+  "module": "Academic Workload",
+  "custom": 0,
+  "istable": 0,
+  "editable_grid": 0,
+  "field_order": [
+    "committee_name",
+    "max_weekly_hours",
+    "enabled",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "committee_name",
+      "label": "Committee / Duty Name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "max_weekly_hours",
+      "label": "Max Hours / Week",
+      "fieldtype": "Float",
+      "default": 0,
+      "description": "Advisory reference from Committees List. Zero means no cap configured."
+    },
+    {
+      "fieldname": "enabled",
+      "label": "Enabled",
+      "fieldtype": "Check",
+      "default": 1
+    },
+    {
+      "fieldname": "notes",
+      "label": "Notes",
+      "fieldtype": "Small Text"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "import": 1
+    },
+    {
+      "role": "Academic Workload Manager",
+      "read": 1
+    }
+  ],
+  "actions": [],
+  "links": [],
+  "states": [],
+  "track_changes": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "allow_rename": 0,
+  "autoname": "field:committee_name",
+  "title_field": "committee_name",
+  "search_fields": "committee_name",
+  "allow_import": 1
+}

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "academic_workload"
+version = "0.1.0"
+authors = [{name = "Innomate"}]
+description = "Academic workload reporting app for Frappe Education"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["academic_workload*"]
+
+[tool.setuptools.package-data]
+academic_workload = ["**/*.json", "**/*.js", "**/*.txt"]
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0"
+erpnext = ">=15.0.0"
+education = ">=15.0.0"

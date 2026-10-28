@@ -1,0 +1,20 @@
+{
+  "doctype": "Report",
+  "name": "Academic Workload Summary",
+  "report_name": "Academic Workload Summary",
+  "report_type": "Script Report",
+  "ref_doctype": "Academic Workload Sheet",
+  "is_standard": "Yes",
+  "module": "Academic Workload",
+  "add_total_row": 0,
+  "disabled": 0,
+  "prepared_report": 0,
+  "roles": [
+    {
+      "role": "Academic Workload Manager"
+    },
+    {
+      "role": "System Manager"
+    }
+  ]
+}

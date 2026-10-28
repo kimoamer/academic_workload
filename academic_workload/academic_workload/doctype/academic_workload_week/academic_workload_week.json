@@ -1,0 +1,334 @@
+{
+  "doctype": "DocType",
+  "name": "Academic Workload Week",
+  "module": "Academic Workload",
+  "custom": 0,
+  "istable": 1,
+  "editable_grid": 1,
+  "field_order": [
+    "week_number",
+    "week_start",
+    "week_end",
+    "actual_recorded",
+    "teaching_section",
+    "lecture_in_faculty",
+    "lecture_outside",
+    "tutorials",
+    "labs",
+    "teaching_column",
+    "practical",
+    "clinical",
+    "workshop",
+    "postgraduate",
+    "planned_teaching_hours",
+    "actual_teaching_hours",
+    "duties_section",
+    "planned_office_hours",
+    "actual_office_hours",
+    "planned_advising",
+    "actual_advising",
+    "planned_committee_hours",
+    "actual_committee_hours",
+    "committee",
+    "duties_column",
+    "planned_research",
+    "actual_research",
+    "planned_meetings",
+    "actual_meetings",
+    "planned_quality",
+    "actual_quality",
+    "planned_other_activities",
+    "actual_other_activities",
+    "calculations_section",
+    "planned_total_hours",
+    "actual_total_hours",
+    "teaching_gap",
+    "total_gap",
+    "workload_status",
+    "feedback_section",
+    "hod_comment",
+    "dean_comment",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "week_number",
+      "label": "Week No.",
+      "fieldtype": "Int",
+      "reqd": 1,
+      "in_list_view": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "week_start",
+      "label": "Week Start",
+      "fieldtype": "Date",
+      "reqd": 1,
+      "in_list_view": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "week_end",
+      "label": "Week End",
+      "fieldtype": "Date",
+      "reqd": 1,
+      "in_list_view": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "actual_recorded",
+      "label": "Actual Recorded",
+      "fieldtype": "Check",
+      "default": 0,
+      "in_list_view": 1,
+      "columns": 1,
+      "description": "Unchecked means not yet reported, not zero worked hours."
+    },
+    {
+      "fieldname": "teaching_section",
+      "label": "Teaching Contact Hours (from Excel)",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "lecture_in_faculty",
+      "label": "Lectures in Faculty",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "lecture_outside",
+      "label": "Lectures Outside",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "tutorials",
+      "label": "Tutorials",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "labs",
+      "label": "Labs",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "teaching_column",
+      "label": "",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "practical",
+      "label": "Practical",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "clinical",
+      "label": "Clinical",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "workshop",
+      "label": "Workshop",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "postgraduate",
+      "label": "Postgraduate",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "planned_teaching_hours",
+      "label": "Planned Teaching Hours",
+      "fieldtype": "Float",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "actual_teaching_hours",
+      "label": "Actual Teaching Hours",
+      "fieldtype": "Float",
+      "default": 0,
+      "description": "Manual actual total; not automatically copied from planned categories.",
+      "in_list_view": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "duties_section",
+      "label": "Other Duties — Planned / Actual",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "planned_office_hours",
+      "label": "Planned Office Hours",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "actual_office_hours",
+      "label": "Actual Office Hours",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "planned_advising",
+      "label": "Planned Advising",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "actual_advising",
+      "label": "Actual Advising",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "planned_committee_hours",
+      "label": "Planned Committee Hours",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "actual_committee_hours",
+      "label": "Actual Committee Hours",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "committee",
+      "label": "Committee / Duty",
+      "fieldtype": "Link",
+      "options": "Academic Workload Committee",
+      "description": "Name of committee (e.g. Quality Assurance) as in Excel."
+    },
+    {
+      "fieldname": "duties_column",
+      "label": "",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "planned_research",
+      "label": "Planned Research",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "actual_research",
+      "label": "Actual Research",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "planned_meetings",
+      "label": "Planned Meetings",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "actual_meetings",
+      "label": "Actual Meetings",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "planned_quality",
+      "label": "Planned Quality",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "actual_quality",
+      "label": "Actual Quality",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "planned_other_activities",
+      "label": "Planned Other Activities",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "actual_other_activities",
+      "label": "Actual Other Activities",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "calculations_section",
+      "label": "Calculated Weekly Totals",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "planned_total_hours",
+      "label": "Planned Total Hours",
+      "fieldtype": "Float",
+      "read_only": 1
+    },
+    {
+      "fieldname": "actual_total_hours",
+      "label": "Actual Total Hours",
+      "fieldtype": "Float",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "teaching_gap",
+      "label": "Teaching Gap (Target - Actual)",
+      "fieldtype": "Float",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_gap",
+      "label": "Total Gap (Target - Actual)",
+      "fieldtype": "Float",
+      "read_only": 1
+    },
+    {
+      "fieldname": "workload_status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "\nNot Recorded\nUnder\nOn Target\nOver",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "feedback_section",
+      "label": "Comments & Notes",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "hod_comment",
+      "label": "HOD Comment",
+      "fieldtype": "Small Text"
+    },
+    {
+      "fieldname": "dean_comment",
+      "label": "Dean Comment",
+      "fieldtype": "Small Text"
+    },
+    {
+      "fieldname": "notes",
+      "label": "Week Notes",
+      "fieldtype": "Small Text"
+    }
+  ],
+  "permissions": [],
+  "actions": [],
+  "links": [],
+  "states": [],
+  "track_changes": 0,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "allow_rename": 0,
+  "autoname": "hash",
+  "allow_import": 0
+}

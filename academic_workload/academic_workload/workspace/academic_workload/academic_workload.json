@@ -1,0 +1,100 @@
+{
+  "doctype": "Workspace",
+  "name": "Academic Workload",
+  "title": "Academic Workload",
+  "label": "Academic Workload",
+  "module": "Academic Workload",
+  "app": "academic_workload",
+  "content": "[{\"id\":\"aw_head_01\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Academic Workload</b></span>\",\"col\":12}},{\"id\":\"aw_short_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Workload Sheets\",\"col\":4}},{\"id\":\"aw_short_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Weekly Workload Report\",\"col\":4}},{\"id\":\"aw_short_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Academic Workload Summary\",\"col\":4}},{\"id\":\"aw_space\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"aw_header2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Configuration &amp; Reference</b></span>\",\"col\":12}},{\"id\":\"aw_card1\",\"type\":\"card\",\"data\":{\"card_name\":\"Workload Setup\",\"col\":4}}]",
+  "charts": [],
+  "number_cards": [],
+  "custom_blocks": [],
+  "shortcuts": [
+    {
+      "label": "Workload Sheets",
+      "type": "DocType",
+      "link_to": "Academic Workload Sheet",
+      "color": "Grey"
+    },
+    {
+      "label": "Weekly Workload Report",
+      "type": "Report",
+      "link_to": "Weekly Workload Report",
+      "color": "Grey"
+    },
+    {
+      "label": "Academic Workload Summary",
+      "type": "Report",
+      "link_to": "Academic Workload Summary",
+      "color": "Grey"
+    }
+  ],
+  "links": [
+    {
+      "type": "Card Break",
+      "label": "Workload Setup",
+      "link_count": 4,
+      "onboard": 0,
+      "hidden": 0
+    },
+    {
+      "type": "Link",
+      "label": "Academic Workload Sheet",
+      "link_type": "DocType",
+      "link_to": "Academic Workload Sheet",
+      "is_query_report": 0,
+      "link_count": 0,
+      "onboard": 0,
+      "hidden": 0
+    },
+    {
+      "type": "Link",
+      "label": "Academic Workload Committee",
+      "link_type": "DocType",
+      "link_to": "Academic Workload Committee",
+      "is_query_report": 0,
+      "link_count": 0,
+      "onboard": 0,
+      "hidden": 0
+    },
+    {
+      "type": "Link",
+      "label": "Weekly Workload Report",
+      "link_type": "Report",
+      "link_to": "Weekly Workload Report",
+      "is_query_report": 1,
+      "link_count": 0,
+      "onboard": 0,
+      "hidden": 0
+    },
+    {
+      "type": "Link",
+      "label": "Academic Workload Summary",
+      "link_type": "Report",
+      "link_to": "Academic Workload Summary",
+      "is_query_report": 1,
+      "link_count": 0,
+      "onboard": 0,
+      "hidden": 0
+    }
+  ],
+  "quick_lists": [],
+  "roles": [
+    {
+      "role": "Academic Workload Manager"
+    },
+    {
+      "role": "System Manager"
+    }
+  ],
+  "public": 1,
+  "is_hidden": 0,
+  "hide_custom": 0,
+  "icon": "education",
+  "idx": 0,
+  "parent_page": "",
+  "for_user": "",
+  "sequence_id": 25,
+  "type": "Workspace",
+  "restrict_to_domain": ""
+}

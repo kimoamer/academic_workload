@@ -1,0 +1,217 @@
+{
+  "doctype": "DocType",
+  "name": "Academic Workload Sheet",
+  "module": "Academic Workload",
+  "custom": 0,
+  "istable": 0,
+  "editable_grid": 0,
+  "field_order": [
+    "staff_section",
+    "employee",
+    "employee_name",
+    "company",
+    "department",
+    "employment_type",
+    "grade",
+    "academic_context_column",
+    "academic_year",
+    "academic_term",
+    "program",
+    "instructor",
+    "targets_section",
+    "standard_teaching_hours",
+    "target_weekly_hours",
+    "entry_setup_column",
+    "first_week_start",
+    "number_of_weeks",
+    "days_per_week",
+    "weeks_section",
+    "weeks",
+    "entry_note"
+  ],
+  "fields": [
+    {
+      "fieldname": "staff_section",
+      "label": "Staff & Academic Context",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "employee",
+      "label": "Employee",
+      "fieldtype": "Link",
+      "options": "Employee",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "employee_name",
+      "label": "Employee Name",
+      "fieldtype": "Data",
+      "fetch_from": "employee.employee_name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "company",
+      "label": "Company",
+      "fieldtype": "Link",
+      "options": "Company",
+      "fetch_from": "employee.company",
+      "read_only": 1
+    },
+    {
+      "fieldname": "department",
+      "label": "Department",
+      "fieldtype": "Link",
+      "options": "Department",
+      "fetch_from": "employee.department",
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "employment_type",
+      "label": "Employment Type",
+      "fieldtype": "Link",
+      "options": "Employment Type",
+      "fetch_from": "employee.employment_type",
+      "read_only": 1
+    },
+    {
+      "fieldname": "grade",
+      "label": "Employee Grade",
+      "fieldtype": "Link",
+      "options": "Employee Grade",
+      "fetch_from": "employee.grade",
+      "read_only": 1
+    },
+    {
+      "fieldname": "academic_context_column",
+      "label": "",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "academic_year",
+      "label": "Academic Year",
+      "fieldtype": "Link",
+      "options": "Academic Year",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "academic_term",
+      "label": "Academic Term",
+      "fieldtype": "Link",
+      "options": "Academic Term",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "program",
+      "label": "Primary Program",
+      "fieldtype": "Link",
+      "options": "Program",
+      "description": "Optional reporting dimension; not a per-course allocation."
+    },
+    {
+      "fieldname": "instructor",
+      "label": "Instructor",
+      "fieldtype": "Link",
+      "options": "Instructor",
+      "description": "Optional Education Instructor record for cross-reference."
+    },
+    {
+      "fieldname": "targets_section",
+      "label": "Weekly Targets & Entry Setup",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "standard_teaching_hours",
+      "label": "Standard Teaching Hours / Week",
+      "fieldtype": "Float",
+      "reqd": 1,
+      "description": "Set for this employee/term; not globally fixed."
+    },
+    {
+      "fieldname": "target_weekly_hours",
+      "label": "Target Total Hours / Week",
+      "fieldtype": "Float",
+      "reqd": 1,
+      "description": "May be different for part-time staff."
+    },
+    {
+      "fieldname": "entry_setup_column",
+      "label": "",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "first_week_start",
+      "label": "First Week Start",
+      "fieldtype": "Date",
+      "description": "Used by Generate Weeks action, not required if rows are entered manually."
+    },
+    {
+      "fieldname": "number_of_weeks",
+      "label": "Number of Weeks",
+      "fieldtype": "Int",
+      "default": 20
+    },
+    {
+      "fieldname": "days_per_week",
+      "label": "Days per Week",
+      "fieldtype": "Int",
+      "default": 6,
+      "description": "For week-end date generation; week start advances by seven days."
+    },
+    {
+      "fieldname": "weeks_section",
+      "label": "Weekly Workload",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "weeks",
+      "label": "Weekly Rows",
+      "fieldtype": "Table",
+      "options": "Academic Workload Week",
+      "reqd": 1
+    },
+    {
+      "fieldname": "entry_note",
+      "label": "Notes",
+      "fieldtype": "Small Text"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "import": 1,
+      "print": 1,
+      "email": 1,
+      "share": 1
+    },
+    {
+      "role": "Academic Workload Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "print": 1
+    }
+  ],
+  "actions": [],
+  "links": [],
+  "states": [],
+  "track_changes": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "allow_rename": 0,
+  "autoname": "AWL-.YYYY.-.#####",
+  "title_field": "employee_name",
+  "search_fields": "employee,employee_name,academic_year,academic_term",
+  "allow_import": 1
+}
