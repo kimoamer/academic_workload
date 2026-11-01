@@ -2,11 +2,12 @@ frappe.query_reports["Academic Workload Summary"] = {
     filters: [
         {
             fieldname: "group_by", label: __("Group By"), fieldtype: "Select",
-            options: "Employee\nDepartment\nProgram\nCompany\nGrade\nEmployment Type", default: "Employee", reqd: 1,
+            options: "Employee\nAcademic Department\nDepartment\nProgram\nCompany\nGrade\nEmployment Type", default: "Employee", reqd: 1,
         },
         { fieldname: "academic_year", label: __("Academic Year"), fieldtype: "Link", options: "Academic Year" },
         { fieldname: "academic_term", label: __("Academic Term"), fieldtype: "Link", options: "Academic Term" },
         { fieldname: "company", label: __("Company"), fieldtype: "Link", options: "Company" },
+        { fieldname: "academic_department", label: __("Academic Department"), fieldtype: "Link", options: "Academic Workload Department" },
         { fieldname: "department", label: __("Department"), fieldtype: "Link", options: "Department" },
         { fieldname: "program", label: __("Program"), fieldtype: "Link", options: "Program" },
         { fieldname: "employee", label: __("Employee"), fieldtype: "Link", options: "Employee" },

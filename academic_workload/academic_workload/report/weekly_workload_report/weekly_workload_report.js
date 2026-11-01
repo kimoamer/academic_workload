@@ -3,6 +3,7 @@ frappe.query_reports["Weekly Workload Report"] = {
         { fieldname: "academic_year", label: __("Academic Year"), fieldtype: "Link", options: "Academic Year" },
         { fieldname: "academic_term", label: __("Academic Term"), fieldtype: "Link", options: "Academic Term" },
         { fieldname: "company", label: __("Company"), fieldtype: "Link", options: "Company" },
+        { fieldname: "academic_department", label: __("Academic Department"), fieldtype: "Link", options: "Academic Workload Department" },
         { fieldname: "department", label: __("Department"), fieldtype: "Link", options: "Department" },
         { fieldname: "program", label: __("Program"), fieldtype: "Link", options: "Program" },
         { fieldname: "employee", label: __("Employee"), fieldtype: "Link", options: "Employee" },

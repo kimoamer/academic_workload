@@ -11,3 +11,10 @@ required_apps = ["erpnext", "education"]
 
 before_install = "academic_workload.setup.install.before_install"
 after_install = "academic_workload.setup.install.after_install"
+
+permission_query_conditions = {
+    "Academic Workload Sheet": "academic_workload.permissions.permission_query_conditions",
+}
+has_permission = {
+    "Academic Workload Sheet": "academic_workload.permissions.has_permission",
+}

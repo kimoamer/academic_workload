@@ -30,9 +30,9 @@ REFERENCE_COMMITTEES = (
 
 def before_install():
     """Create a private-to-the-app role before DocType permissions are synced."""
-    role_name = "Academic Workload Manager"
-    if not frappe.db.exists("Role", role_name):
-        frappe.get_doc({"doctype": "Role", "role_name": role_name, "desk_access": 1}).insert(ignore_permissions=True)
+    for role_name in ("Academic Workload Manager", "Academic Workload Employee"):
+        if not frappe.db.exists("Role", role_name):
+            frappe.get_doc({"doctype": "Role", "role_name": role_name, "desk_access": 1}).insert(ignore_permissions=True)
 
 
 def after_install():

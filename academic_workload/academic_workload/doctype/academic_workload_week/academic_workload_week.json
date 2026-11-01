@@ -35,6 +35,10 @@
     "actual_research",
     "planned_meetings",
     "actual_meetings",
+    "planned_cbl",
+    "actual_cbl",
+    "planned_projects",
+    "actual_projects",
     "planned_quality",
     "actual_quality",
     "planned_other_activities",
@@ -44,8 +48,12 @@
     "actual_total_hours",
     "teaching_gap",
     "total_gap",
+    "adjusted_target_hours",
     "workload_status",
     "feedback_section",
+    "mission_hours",
+    "vacation_hours",
+    "attendance_hours",
     "hod_comment",
     "dean_comment",
     "notes"
@@ -154,10 +162,10 @@
       "fieldname": "actual_teaching_hours",
       "label": "Actual Teaching Hours",
       "fieldtype": "Float",
-      "default": 0,
-      "description": "Manual actual total; not automatically copied from planned categories.",
+      "description": "Server-calculated sum of eight Teaching Contact Hours categories.",
       "in_list_view": 1,
-      "columns": 1
+      "columns": 1,
+      "read_only": 1
     },
     {
       "fieldname": "duties_section",
@@ -237,6 +245,30 @@
       "default": 0
     },
     {
+      "fieldname": "planned_cbl",
+      "label": "Planned CBL",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "actual_cbl",
+      "label": "Actual CBL",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "planned_projects",
+      "label": "Planned Projects",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "actual_projects",
+      "label": "Actual Projects",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
       "fieldname": "planned_quality",
       "label": "Planned Quality",
       "fieldtype": "Float",
@@ -292,6 +324,12 @@
       "read_only": 1
     },
     {
+      "fieldname": "adjusted_target_hours",
+      "label": "Adjusted Weekly Target",
+      "fieldtype": "Float",
+      "read_only": 1
+    },
+    {
       "fieldname": "workload_status",
       "label": "Status",
       "fieldtype": "Select",
@@ -304,6 +342,24 @@
       "fieldname": "feedback_section",
       "label": "Comments & Notes",
       "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "mission_hours",
+      "label": "Work Trips / Mission Hours",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "vacation_hours",
+      "label": "Vacation Hours",
+      "fieldtype": "Float",
+      "default": 0
+    },
+    {
+      "fieldname": "attendance_hours",
+      "label": "Week Attendance from ERP / Hours",
+      "fieldtype": "Float",
+      "default": 0
     },
     {
       "fieldname": "hod_comment",

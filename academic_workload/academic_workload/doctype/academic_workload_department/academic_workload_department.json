@@ -1,0 +1,64 @@
+{
+  "doctype": "DocType",
+  "name": "Academic Workload Department",
+  "module": "Academic Workload",
+  "custom": 0,
+  "istable": 0,
+  "editable_grid": 0,
+  "autoname": "field:department_name",
+  "title_field": "department_name",
+  "field_order": [
+    "department_name",
+    "company",
+    "disabled",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "department_name",
+      "label": "Academic Department Name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "company",
+      "label": "Company",
+      "fieldtype": "Link",
+      "options": "Company"
+    },
+    {
+      "fieldname": "disabled",
+      "label": "Disabled",
+      "fieldtype": "Check",
+      "default": 0
+    },
+    {
+      "fieldname": "notes",
+      "label": "Notes",
+      "fieldtype": "Small Text"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1
+    },
+    {
+      "role": "Academic Workload Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1
+    },
+    {
+      "role": "Academic Workload Employee",
+      "read": 1
+    }
+  ],
+  "track_changes": 1
+}
