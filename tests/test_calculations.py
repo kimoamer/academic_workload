@@ -25,7 +25,7 @@ class CalculationTests(unittest.TestCase):
         self.assertEqual(got["workload_status"], "On Target")
 
     def test_pending_week_is_not_automatically_under_target(self):
-        got = calculate_week({"lecture_in_faculty": 3, "actual_recorded": 0}, 10, 40)
+        got = calculate_week({"actual_recorded": 0}, 10, 40)
         self.assertEqual(got["workload_status"], "Not Recorded")
         self.assertEqual(got["actual_recorded"], 0)
         self.assertEqual(got["total_gap"], 0)
