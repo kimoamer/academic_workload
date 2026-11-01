@@ -1,9 +1,4 @@
-"""Preview an existing weekly workload XLSX without altering an ERPNext site.
-
-Designed for the supplied 'Weekly Workload' sheet. Return a ready-to-review
-mapping; data insertion is deliberately not automatic and must be explicit.
-"""
-
+"""Preview-only parser for the updated Rania Nadeem workbook (no writes)."""
 from __future__ import annotations
 
 from academic_workload.utils.calculations import calculate_week
@@ -19,60 +14,59 @@ DUTY_COLUMNS = {
     "planned_committee_hours": "S", "actual_committee_hours": "T",
     "planned_research": "U", "actual_research": "V",
     "planned_meetings": "W", "actual_meetings": "X",
-    "planned_quality": "Y", "actual_quality": "Z",
-    "planned_other_activities": "AA", "actual_other_activities": "AB",
+    "planned_cbl": "Y", "actual_cbl": "Z",
+    "planned_projects": "AA", "actual_projects": "AB",
+    "planned_quality": "AC", "actual_quality": "AD",
+    "planned_other_activities": "AE", "actual_other_activities": "AF",
+    "mission_hours": "AJ", "vacation_hours": "AK",
+    "attendance_hours": "AR",
 }
-ACTUAL_COLUMNS = ("M", "O", "Q", "T", "V", "X", "Z", "AB")
+ACTUAL_COLUMNS = ("M", "O", "Q", "T", "V", "X", "Z", "AB", "AD", "AF", "AJ", "AK")
 
 
 def preview_workbook(path, *, target_weekly_hours):
-    """Parse the workbook as data, not formulas, and distinguish blank from 0.
-
-    `target_weekly_hours` must be provided explicitly: Excel's Status cell
-    hard-codes 40, which must NOT become an institution-wide assumption.
-    """
     from openpyxl import load_workbook
-
     book = load_workbook(path, read_only=True, data_only=False)
     try:
         if "Weekly Workload" not in book.sheetnames:
             raise ValueError("Expected worksheet 'Weekly Workload'")
         sheet = book["Weekly Workload"]
-        # Verify a few headings before mapping fixed column letters.
         if "Teaching" not in str(sheet["D6"].value) or "Week" not in str(sheet["A7"].value):
             raise ValueError("Workbook has an unknown header format")
+        if "CBL" not in str(sheet["Y7"].value) or "Projects" not in str(sheet["AA7"].value):
+            raise ValueError("Expected the updated 2026 workbook (CBL and Projects)")
         records = []
         standard_hours = None
-        for row_index in range(8, 200):
-            week_no = sheet[f"A{row_index}"].value
-            if week_no in (None, ""):
+        for i in range(8, 200):
+            week_number = sheet[f"A{i}"].value
+            if not isinstance(week_number, (int, float)):
                 break
-            if not isinstance(week_no, (int, float)):
-                break  # Average and footer rows
             mapped = {
-                "week_number": int(week_no),
-                "week_start": sheet[f"B{row_index}"].value,
-                "week_end": sheet[f"C{row_index}"].value,
-                "committee": sheet[f"R{row_index}"].value,
-                "hod_comment": sheet[f"AF{row_index}"].value,
-                "dean_comment": sheet[f"AG{row_index}"].value,
-                "actual_teaching_hours": sheet[f"M{row_index}"].value,
+                "week_number": int(week_number),
+                "week_start": sheet[f"B{i}"].value,
+                "week_end": sheet[f"C{i}"].value,
+                "committee": sheet[f"R{i}"].value,
+                "hod_comment": sheet[f"AL{i}"].value,
+                "dean_comment": sheet[f"AM{i}"].value,
             }
-            for field, column in {**TEACHING_COLUMNS, **DUTY_COLUMNS}.items():
-                mapped[field] = sheet[f"{column}{row_index}"].value
-            # 0 is a valid actual if explicitly typed; all blank = pending.
-            mapped["actual_recorded"] = int(any(
-                sheet[f"{column}{row_index}"].value is not None
-                for column in ACTUAL_COLUMNS
-            ))
-            standard_value = sheet[f"AH{row_index}"].value
-            if isinstance(standard_value, (int, float)):
+            for field, col in {**TEACHING_COLUMNS, **DUTY_COLUMNS}.items():
+                v = sheet[f"{col}{i}"].value
+                mapped[field] = v if not (isinstance(v, str) and v.startswith("=")) else None
+            mapped["actual_recorded"] = int(any(sheet[f"{col}{i}"].value is not None for col in ACTUAL_COLUMNS))
+            standard = sheet[f"AN{i}"].value
+            if isinstance(standard, (float, int)):
                 if standard_hours is None:
-                    standard_hours = float(standard_value)
-                elif standard_hours != float(standard_value):
+                    standard_hours = float(standard)
+                elif standard_hours != float(standard):
                     raise ValueError("Standard teaching target differs between rows")
+            # Excel M includes historical manually-entered actual totals. The new
+            # app derives actual teaching from D:K instead: no M import.
             mapped.update(calculate_week(mapped, standard_hours or 0, target_weekly_hours))
             records.append(mapped)
-        return {"standard_teaching_hours": standard_hours, "target_weekly_hours": target_weekly_hours, "weeks": records}
+        return {
+            "standard_teaching_hours": standard_hours,
+            "target_weekly_hours": target_weekly_hours,
+            "weeks": records,
+        }
     finally:
         book.close()
