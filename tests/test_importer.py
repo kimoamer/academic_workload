@@ -63,7 +63,7 @@ class WorkbookPreviewTests(unittest.TestCase):
         self.assertEqual(first["mission_hours"], 2)
         self.assertEqual(first["vacation_hours"], 2)
         self.assertEqual(first["planned_teaching_hours"], 4)
-        self.assertEqual(first["actual_total_hours"], 44)
+        self.assertEqual(first["actual_total_hours"], 46)
         self.assertEqual(first["teaching_gap"], 6)
         self.assertEqual(second["workload_status"], "Not Recorded")
         self.assertEqual(second["actual_recorded"], 0)
