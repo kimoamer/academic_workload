@@ -12,17 +12,17 @@ planner, an HR approval engine, or a full academic scheduling system.
 | **Academic Workload Week** | Child table with planned teaching categories, manually entered actual teaching, other duties, comments and totals |
 | **Academic Workload Committee** | Optional committee/duty reference and advisory weekly hours cap |
 
-Reuses ERPNext `Employee`, `Department`, `Company`, plus Education `Instructor`,
+Includes dedicated `Academic Workload Department`, distinct from HR `Department`. Reuses ERPNext `Employee`, `Department`, `Company`, plus Education `Instructor`,
 `Program`, `Academic Year`, and `Academic Term`. No changes or overrides to their
 schemas. HRMS is optional, and there is **no dependency on Course Schedule**.
 
-The weekly child record preserves the supplied spreadsheet's categories:
+Each employee can access only their own sheet through server permissions. Staff cannot edit past weeks after their end date, and cannot alter sheet-wide targets. Managers may correct past data with tracked changes. Managers create sheets and assign each employee the `Academic Workload Employee` role. The weekly child record preserves the supplied spreadsheet's categories:
 
 - Planned teaching: in-faculty lectures, outside lectures, tutorials, labs,
   practical, clinical, workshops, postgraduate.
-- Actual teaching: a **separate manually entered total** (not copied from plan).
+- Actual teaching: **automatically summed** from the eight Teaching contact-hour fields; no manual total.
 - Other duties: office hours, advising, committee hours, research, meetings,
-  quality, and other activities — with separate planned and actual values.
+  CBL, projects, quality, and other activities — with separate planned and actual values.
 - Committee name, HOD and Dean comments, week number and dates.
 
 Target teaching hours and target total hours are stored **per sheet**. Do not
@@ -30,11 +30,13 @@ assume a 40-hour weekly target or a 10-hour teaching target for every staff memb
 
 ## Recording logic
 
-- `Planned Teaching = sum(eight planned teaching categories)`
+- `Planned Teaching = sheet-level Plan Teaching Load`
 - `Planned Total = Planned Teaching + planned other duties`
+- `Actual Teaching = sum(eight teaching contact-hour categories)`
 - `Actual Total = actual teaching + actual other duties`
+- `Adjusted Target = target total hours - mission hours - vacation hours`
 - `Teaching Gap = teaching target - actual teaching`
-- `Total Gap = weekly target - actual total`
+- `Total Gap = adjusted target - actual total`
 - Status: **Not Recorded / Under / On Target / Over**
 
 **Not Recorded** is different from **zero actual**: a newly generated week has

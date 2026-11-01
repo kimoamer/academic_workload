@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1] / "academic_workload" / "academic_wor
 class SchemaTests(unittest.TestCase):
     def test_doctype_metadata_is_consistent(self):
         doctypes = (
-            "academic_workload_sheet", "academic_workload_week", "academic_workload_committee"
+            "academic_workload_sheet", "academic_workload_week", "academic_workload_committee", "academic_workload_department"
         )
         for name in doctypes:
             with self.subTest(doctype=name):
@@ -23,7 +23,9 @@ class SchemaTests(unittest.TestCase):
     def test_week_has_all_excel_metrics(self):
         meta = json.loads((ROOT / "doctype" / "academic_workload_week" / "academic_workload_week.json").read_text())
         fields = {item["fieldname"] for item in meta["fields"]}
-        expected = {"actual_recorded", "planned_total_hours", "actual_total_hours", "teaching_gap", "total_gap",
+        expected = {"planned_cbl", "actual_cbl", "planned_projects", "actual_projects",
+                    "mission_hours", "vacation_hours", "adjusted_target_hours",
+                    "actual_recorded", "planned_total_hours" , "actual_total_hours", "teaching_gap", "total_gap",
                     "lecture_in_faculty", "lecture_outside", "tutorials", "labs", "practical", "clinical", "workshop", "postgraduate",
                     "hod_comment", "dean_comment"}
         self.assertTrue(expected <= fields)

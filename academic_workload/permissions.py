@@ -19,7 +19,7 @@ def permission_query_conditions(user=None):
     employee = employee_for_user(user)
     if not employee:
         return "1=0"
-    return "tabAcademic Workload Sheet.employee = " + frappe.db.escape(employee)
+    return "`tabAcademic Workload Sheet`.`employee` = " + frappe.db.escape(employee)
 
 
 def has_permission(doc, ptype=None, user=None):
