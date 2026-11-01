@@ -21,7 +21,8 @@ COLUMNS = [
     column("employee", "Employee", "Link", 135, "Employee"),
     column("employee_name", "Employee Name", "Data", 190),
     column("company", "Company", "Link", 125, "Company", hidden=1),
-    column("department", "Department", "Link", 150, "Department"),
+    column("department", "HR Department", "Link", 150, "Department", hidden=1),
+    column("academic_department", "Academic Department", "Link", 170, "Academic Workload Department"),
     column("program", "Program", "Link", 120, "Program", hidden=1),
     column("grade", "Employee Grade", "Link", 120, "Employee Grade", hidden=1),
     column("employment_type", "Employment Type", "Link", 145, "Employment Type", hidden=1),
@@ -52,6 +53,14 @@ COLUMNS = [
     column("actual_research", "Actual Research"),
     column("planned_meetings", "Planned Meetings"),
     column("actual_meetings", "Actual Meetings"),
+    column("planned_cbl", "Planned CBL"),
+    column("actual_cbl", "Actual CBL"),
+    column("planned_projects", "Planned Projects"),
+    column("actual_projects", "Actual Projects"),
+    column("mission_hours", "Mission Hours"),
+    column("vacation_hours", "Vacation Hours"),
+    column("adjusted_target_hours", "Adjusted Target Hours"),
+    column("attendance_hours", "ERP Attendance Hours"),
     column("planned_quality", "Planned Quality"),
     column("actual_quality", "Actual Quality"),
     column("planned_other_activities", "Planned Other Activities"),
@@ -69,7 +78,7 @@ COLUMNS = [
 ]
 
 ACTUAL_COLUMNS = {
-    "actual_teaching_hours", "actual_office_hours", "actual_advising",
+    "actual_teaching_hours", "actual_cbl", "actual_projects", "actual_office_hours", "actual_advising",
     "actual_committee_hours", "actual_research", "actual_meetings",
     "actual_quality", "actual_other_activities", "actual_total_hours",
     "teaching_gap", "total_gap",
@@ -83,7 +92,7 @@ def execute(filters=None):
         sheet = sheets[week["parent"]]
         row = {**dict(week)}
         row.update({key: sheet.get(key) for key in (
-            "employee", "employee_name", "company", "department", "program", "grade", "employment_type",
+            "employee", "employee_name", "company", "department", "academic_department", "program", "grade", "employment_type",
             "academic_year", "academic_term", "target_weekly_hours", "standard_teaching_hours",
         )})
         row["sheet"] = week["parent"]

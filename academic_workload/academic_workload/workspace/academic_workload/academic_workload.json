@@ -33,7 +33,7 @@
     {
       "type": "Card Break",
       "label": "Workload Setup",
-      "link_count": 4,
+      "link_count": 5,
       "onboard": 0,
       "hidden": 0
     },
@@ -42,6 +42,16 @@
       "label": "Academic Workload Sheet",
       "link_type": "DocType",
       "link_to": "Academic Workload Sheet",
+      "is_query_report": 0,
+      "link_count": 0,
+      "onboard": 0,
+      "hidden": 0
+    },
+    {
+      "type": "Link",
+      "label": "Academic Departments",
+      "link_type": "DocType",
+      "link_to": "Academic Workload Department",
       "is_query_report": 0,
       "link_count": 0,
       "onboard": 0,
@@ -85,6 +95,9 @@
     },
     {
       "role": "System Manager"
+    },
+    {
+      "role": "Academic Workload Employee"
     }
   ],
   "public": 1,

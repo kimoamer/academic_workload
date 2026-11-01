@@ -8,7 +8,7 @@ import frappe
 
 SHEET_FIELDS = [
     "name", "employee", "employee_name", "company", "department",
-    "program", "instructor", "grade", "employment_type", "academic_year", "academic_term",
+    "academic_department", "planned_teaching_load", "program", "instructor", "grade", "employment_type", "academic_year", "academic_term",
     "standard_teaching_hours", "target_weekly_hours",
 ]
 
@@ -16,12 +16,13 @@ WEEK_FIELDS = [
     "name", "parent", "idx", "week_number", "week_start", "week_end", "actual_recorded",
     "lecture_in_faculty", "lecture_outside", "tutorials", "labs", "practical",
     "clinical", "workshop", "postgraduate",
-    "planned_teaching_hours", "actual_teaching_hours", "committee",
+    "planned_teaching_hours", "actual_teaching_hours", "adjusted_target_hours", "mission_hours", "vacation_hours", "attendance_hours", "committee",
     "planned_office_hours", "actual_office_hours",
     "planned_advising", "actual_advising",
     "planned_committee_hours", "actual_committee_hours",
     "planned_research", "actual_research",
     "planned_meetings", "actual_meetings",
+    "planned_cbl", "actual_cbl", "planned_projects", "actual_projects",
     "planned_quality", "actual_quality",
     "planned_other_activities", "actual_other_activities",
     "planned_total_hours", "actual_total_hours", "teaching_gap", "total_gap",
@@ -31,7 +32,7 @@ WEEK_FIELDS = [
 
 def get_workload_rows(filters=None):
     filters = filters or {}
-    allowed = {"employee", "company", "department", "program", "academic_year", "academic_term", "grade", "employment_type"}
+    allowed = {"employee", "company", "department", "academic_department", "program", "academic_year", "academic_term", "grade", "employment_type"}
     parent_filters = {key: filters[key] for key in allowed if filters.get(key)}
     sheets = frappe.get_list(
         "Academic Workload Sheet", filters=parent_filters, fields=SHEET_FIELDS,

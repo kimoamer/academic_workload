@@ -6,7 +6,7 @@ from academic_workload.utils.calculations import calculate_week, validate_weeks,
 class CalculationTests(unittest.TestCase):
     def test_first_week_matches_40_hour_workbook_example(self):
         week = {
-            "lecture_in_faculty": 3, "lecture_outside": 1, "actual_teaching_hours": 4,
+            "lecture_in_faculty": 3, "lecture_outside": 1,
             "planned_office_hours": 4, "actual_office_hours": 5,
             "planned_advising": 4, "actual_advising": 2,
             "planned_committee_hours": 4, "actual_committee_hours": 2,
@@ -25,7 +25,7 @@ class CalculationTests(unittest.TestCase):
         self.assertEqual(got["workload_status"], "On Target")
 
     def test_pending_week_is_not_automatically_under_target(self):
-        got = calculate_week({"lecture_in_faculty": 3, "actual_recorded": 0}, 10, 40)
+        got = calculate_week({"actual_recorded": 0}, 10, 40)
         self.assertEqual(got["workload_status"], "Not Recorded")
         self.assertEqual(got["actual_recorded"], 0)
         self.assertEqual(got["total_gap"], 0)
@@ -40,8 +40,22 @@ class CalculationTests(unittest.TestCase):
         self.assertEqual(got["workload_status"], "Under")
         self.assertEqual(got["actual_recorded"], 1)
 
+    def test_derived_teaching_and_cbl_project_vacation(self):
+        row = {"lecture_in_faculty": 4, "labs": 2, "planned_cbl": 2, "actual_cbl": 1,
+               "planned_projects": 3, "actual_projects": 4, "mission_hours": 8,
+               "vacation_hours": 8}
+        got = calculate_week(row, 12, 40, planned_teaching_load=10)
+        self.assertEqual(got["actual_teaching_hours"], 6)
+        self.assertEqual(got["planned_teaching_hours"], 10)
+        self.assertEqual(got["planned_total_hours"], 15)
+        self.assertEqual(got["actual_total_hours"], 11)
+        self.assertEqual(got["adjusted_target_hours"], 24)
+        self.assertEqual(got["total_gap"], 13)
+        with self.assertRaisesRegex(ValueError, "Mission plus vacation"):
+            calculate_week({"mission_hours": 20, "vacation_hours": 21}, 12, 40)
+
     def test_over_target(self):
-        got = calculate_week({"actual_recorded": 1, "actual_teaching_hours": 46}, 10, 40)
+        got = calculate_week({"actual_recorded": 1, "lecture_in_faculty": 46}, 10, 40)
         self.assertEqual(got["workload_status"], "Over")
         self.assertEqual(got["total_gap"], -6)
 

@@ -11,6 +11,7 @@
     "employee_name",
     "company",
     "department",
+    "academic_department",
     "employment_type",
     "grade",
     "academic_context_column",
@@ -19,6 +20,7 @@
     "program",
     "instructor",
     "targets_section",
+    "planned_teaching_load",
     "standard_teaching_hours",
     "target_weekly_hours",
     "entry_setup_column",
@@ -66,6 +68,14 @@
       "fetch_from": "employee.department",
       "read_only": 1,
       "in_list_view": 1
+    },
+    {
+      "fieldname": "academic_department",
+      "label": "Academic Department",
+      "fieldtype": "Link",
+      "options": "Academic Workload Department",
+      "in_list_view": 1,
+      "reqd": 1
     },
     {
       "fieldname": "employment_type",
@@ -122,6 +132,14 @@
       "fieldname": "targets_section",
       "label": "Weekly Targets & Entry Setup",
       "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "planned_teaching_load",
+      "label": "Plan Teaching Load / Week",
+      "fieldtype": "Float",
+      "default": 0,
+      "reqd": 1,
+      "description": "Weekly planned teaching load; not calculated from actual contact-hour entries."
     },
     {
       "fieldname": "standard_teaching_hours",
@@ -201,6 +219,16 @@
       "report": 1,
       "export": 1,
       "print": 1
+    },
+    {
+      "role": "Academic Workload Employee",
+      "read": 1,
+      "write": 1,
+      "create": 0,
+      "delete": 0,
+      "report": 1,
+      "export": 0,
+      "share": 0
     }
   ],
   "actions": [],

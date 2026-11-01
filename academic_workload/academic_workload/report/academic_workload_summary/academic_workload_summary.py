@@ -8,6 +8,7 @@ from academic_workload.utils.report_data import get_workload_rows
 
 GROUP_TYPES = {
     "employee": ("Employee", "Link", "Employee"),
+    "academic_department": ("Academic Department", "Link", "Academic Workload Department"),
     "department": ("Department", "Link", "Department"),
     "program": ("Program", "Link", "Program"),
     "company": ("Company", "Link", "Company"),
